@@ -1,0 +1,19 @@
+class Solution:
+    def countGoodSubstrings(self, s: str) -> int:
+        windowsize=3
+        slidingWindowCount=len(s)-windowsize+1
+        index=0
+        count=0
+        while slidingWindowCount>0:
+            list=[]
+            tmpstr=s[index:windowsize+index]
+            for i in tmpstr:
+                if i in list:
+                    break
+                else:
+                    list.append(i)
+            else:
+                count+=1
+            index+=1
+            slidingWindowCount-=1
+        return count
